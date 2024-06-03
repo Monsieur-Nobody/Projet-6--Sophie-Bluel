@@ -1,0 +1,104 @@
+.gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+
+  img {
+    width: 100%;
+  }
+}
+
+#introduction {
+  display: flex;
+  align-items: center;
+  figure {
+    flex: 1;
+  }
+
+  img {
+    display: block;
+    margin: auto;
+    width: 80%;
+  }
+  article {
+    flex: 1;
+  }
+  h2 {
+    margin-bottom: 1em;
+  }
+  p {
+    margin-bottom: 0.5em;
+  }
+}
+
+#portfolio h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+#contact {
+  width: 50%;
+  margin: auto;
+  > * {
+    text-align: center;
+  }
+  h2 {
+    margin-bottom: 20px;
+  }
+  form {
+    text-align: left;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  input {
+    height: 50px;
+    font-size: 1.2em;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  }
+  label {
+    margin: 2em 0 1em 0;
+  }
+  textarea {
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  }
+}
+
+input[type="submit"] {
+  font-family: "Syne";
+  font-weight: 700;
+  color: white;
+  background-color: #1d6154;
+  margin: 2em auto;
+  width: 180px;
+  text-align: center;
+  border-radius: 60px;
+}
+
+.filtres {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+button {
+  font-family: 'Work Sans' ;
+  font-weight: 500;
+  margin-left: 10px;
+	border: 1px solid #1D6154;
+  border-radius: 60px;
+	font-size: 1.15em;
+	color: #1D6154;
+	background-color: white;
+	padding: 7px 15px;  
+
+  &:focus {
+    background-color: #1D6154;
+    color: white;
+  }
+}
