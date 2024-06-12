@@ -1,39 +1,48 @@
-document.addEventListener("DOMContentLoaded", () => {
+// document.addEventListener("DOMContentLoaded", (event) => {
+//     console.log("Page chargée.")
 
-const $informationsLogin = document.getElementById("login_id")
+    
+// });
 
-    $informationsLogin.addEventListener("submit" , (event) => {
+const $form = document.querySelector('form');
+const $email = document.getElementById("email")
+const $password = document.getElementById("password")
 
+
+$form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const $email = document.getElementById("email").value;
-    const $password = document.getElementById("password").value;
-    
-    console.log("E-mail:", $email);
-    console.log("Password:", $password);
-
-
-   // Exemple d'envoi des données à une API
-   const donnees = {
-    email: $email,
-    password: $password
-  };
-
-  fetch("http://localhost:5678/api/users/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(donnees)
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log("Succès:", data);
-    // Ajouter ici la gestion des cas de succès, par exemple rediriger l'utilisateur
-  })
-  .catch(error => {
-    console.error("Erreur:", error);
-    // Ajouter ici la gestion des erreurs
-  });
+    $verifierChamps($email);
+    $verifierChamps($password);
 });
-});
+
+function $verifierChamps(champ) {
+    if (champ.value.trim() === ""){
+        champ.classList.add("error")
+        $email.placeholder = " Veuillez remplir ce champ."
+        $password.placeholder = " Veuillez remplir ce champ."
+    } else {
+        champ.classList.remove("error")
+    }
+}
+
+const $verifierEmail = (balise) => {
+    let $emailValide = new RegExp("/[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9._-]/gm")
+    if ($emailValide.test(balise.value)){
+        balise.classList.remove("error")
+    } else {
+        balise.classList.add("error")
+    }
+}
+const $verifierPassword = (balise) => {
+    let $passwordValide = new RegExp("/[a-zA-Z0-9._-]+/gm")
+    if ($passwordValide.test(balise.value)){
+        balise.classList.remove("error")
+    } else {
+        balise.classList.add("error")
+    }
+}
+
+
+
+

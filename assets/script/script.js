@@ -57,7 +57,7 @@ const afficherImages = (idCat) => {
 
     $images.forEach((i) => {
         // console.log(i)
-        console.log(idCat == i.categoryId)
+        // console.log(idCat == i.categoryId)
         if (idCat == 0 ){
             $gallery.innerHTML += `  <figure>
                                 <img src='${i.imageUrl}' alt='${i.title}'>

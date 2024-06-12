@@ -186,6 +186,9 @@ nav li {
 nav li:hover {
   color: #b1663c;
 }
+nav li a:hover {
+  color: #b1663c;
+}
 
 .gallery {
   width: 100%;
@@ -309,6 +312,10 @@ button:focus {
   height: 50px;
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.error {
+  box-shadow: 0px 0px 14px 3px red !important;
 }
 
 footer nav ul {
