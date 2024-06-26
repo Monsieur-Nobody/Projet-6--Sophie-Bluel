@@ -33,10 +33,23 @@
   }
 }
 
-#portfolio h2 {
-  text-align: center;
+.mesProjets {
   margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  
+
+  i {
+    padding-right: 5px;
+  }
+  
 }
+// #portfolio h2 {
+ 
+  
+// }
 
 #contact {
   width: 50%;
@@ -101,4 +114,30 @@ button {
     background-color: #1D6154;
     color: white;
   }
+
 }
+
+.modeEdition {
+  
+	position: fixed;
+	left:0;
+	right:0;
+	top:0;
+	z-index:999;
+	background-color: #000;
+	color: #fff;
+
+	flex-direction:row;
+	justify-content: center;
+	align-items: center;
+	height: 45px;
+	width:100vw;
+  
+    i{
+      margin-right: 10px;
+    }
+}
+  .adminOnly {
+    display: none;
+  }
+  
