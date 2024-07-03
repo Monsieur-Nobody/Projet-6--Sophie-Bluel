@@ -9,7 +9,7 @@ let $categories = [];
 // Variable contenant la route de l'API
 const $routeApi = "http://localhost:5678/api/";
 
-const recupererImage = () => {
+const recupererImage = async () => {
   //On recupére les images via la route works avec une requete HTTP
   fetch(`${$routeApi}works`)
     //then nous sert a "renvoyer une promesse" et nous evite d'utiliser await, et nous assure que l'action est bien le temps de s'effectuer
@@ -20,6 +20,9 @@ const recupererImage = () => {
       // Maintenant qu'on a vérifié qu'on recupere bien les informations via le console.log on les attribue a la variable $images
       $images = data;
       afficherImages(0);
+      if (isAdmin()) {
+        afficherImagesModal();
+      }
     })
     // catch nous permet d'attraper toutes les erreurs possibles et de les afficher via console.log
     .catch((e) => console.log(e));
@@ -83,11 +86,7 @@ const afficherCategories = () => {
     });
     $filtreContainer.appendChild($btn);
   });
-
-  
 };
 
 recupererImage();
 recupererCategories();
-
-

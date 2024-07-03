@@ -375,7 +375,7 @@ footer nav ul {
   width: 630px;
   padding: 30px;
   border-radius: 10px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   margin: auto;
   overflow: auto;
   z-index: 2;
@@ -404,8 +404,19 @@ footer nav ul {
 
 .modalContent {
   width: 70%;
-  border-bottom: 1px solid #B3B3B3;
+  border-bottom: 1px solid #b3b3b3;
   padding-bottom: 47px;
+}
+
+.frameOneModal {
+  display: flex;
+  flex-wrap: wrap;
+}
+.frameOneModal article {
+  width: 20%;
+}
+.frameOneModal article img {
+  width: 75px;
 }
 
 #editGallery .modalContent {
@@ -422,7 +433,7 @@ footer nav ul {
 }
 
 #deleteGallery {
-  color: #D65353;
+  color: #d65353;
 }
 
 .miniWork figcaption {
@@ -437,7 +448,7 @@ footer nav ul {
   display: block;
   box-sizing: border-box;
   background-color: #000000;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 0.7em;
   padding: 4px 5px;
   border-radius: 2px;
@@ -455,7 +466,7 @@ footer nav ul {
 }
 
 #valider {
-  background-color: #A7A7A7;
+  background-color: #a7a7a7;
   width: 37%;
 }
 
@@ -471,10 +482,8 @@ footer nav ul {
   flex-direction: column;
   align-items: center;
   height: 200px;
-  background-color: #E8F1F6;
-  border-radius: 3px;
+  background-color: #e8f1f6;
   margin-bottom: 30px;
-  text-align: center;
   width: 100%;
   padding-top: 25px;
   position: relative;
@@ -491,33 +500,18 @@ footer nav ul {
   width: 5.1em;
 }
 
-#picturePreview {
-  display: flex;
-  background-color: #E8F1F6;
-  height: 200px;
-  width: 100%;
-  justify-content: center;
-}
-
-#picturePreview img {
-  height: 100%;
-  width: 31%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
 #browsePictures {
   font-family: "Work Sans";
   font-size: 1em;
   font-weight: 600;
-  color: #3D3D3D;
+  color: #3d3d3d;
   width: -moz-fit-content;
   width: fit-content;
 }
 
 #browsePictures {
   color: #306685;
-  background-color: #CBD6DC;
+  background-color: #cbd6dc;
   border: none;
   padding: 10px 33px;
   margin-bottom: 10px;
@@ -538,7 +532,7 @@ select {
   background-position: center right;
   background-origin: content-box;
   padding-right: 20px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 option {

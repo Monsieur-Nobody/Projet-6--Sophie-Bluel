@@ -43,8 +43,8 @@ $form.addEventListener("submit", (event) => {
         })
         .then((data) => {
             console.log(data);
-            sessionStorage.setItem('token', data.token)
-            sessionStorage.setItem('isLoggedIn', 'true')
+            sessionStorage.setItem('token', data.token);
+            sessionStorage.setItem('isLoggedIn', 'true' );
             window.location.href = "index.html";
         })
         .catch((error) => {

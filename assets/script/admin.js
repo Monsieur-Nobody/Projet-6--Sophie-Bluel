@@ -2,37 +2,20 @@ const isAdmin = () => {
   return sessionStorage.getItem("token") ? true : false;
 };
 
-console.log(isAdmin());
-
-if (isAdmin) {
-} else {
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-if (sessionStorage.getItem("isLoggedIn") != "true") {
-    return;
+  if (isAdmin()) {
+    afficherModeEdition();
   }
-
-
-
-afficherDeconnexion();
-afficherModeEdition();
-
-
 });
 
 const afficherModeEdition = () => {
-    document.querySelectorAll('.adminOnly').forEach(element => {
-        element.style.display = 'flex';
-    });
-
+  document.querySelectorAll(".adminOnly").forEach((element) => {
+    element.style.display = "flex";
+  });
+  afficherDeconnexion();
 };
 
-
-
 const afficherDeconnexion = () => {
-  
-
   const loginLogoutLink = document.getElementById("LinkLog");
   loginLogoutLink.textContent = "logout";
   loginLogoutLink.href = "#";
