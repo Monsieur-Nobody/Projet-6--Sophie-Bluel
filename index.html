@@ -26,6 +26,7 @@
       <i class="fa-regular fa-pen-to-square"></i
       ><span class="lienModal">Mode édition </span>
     </div>
+
     <aside class="modal">
       <div class="modalWrapper" id="editGallery">
         <div class="modalHeader"><i class="fa-solid fa-xmark"></i></div>
@@ -35,7 +36,7 @@
       </div>
       <div class="modalWrapper" id="addPicture">
         <div class="modalHeader">
-          <i class="fa-solid fa-arrow-left"></i
+          <i class="fa-solid fa-arrow-left" id="arrowBack"></i
           ><i class="fa-solid fa-xmark"></i>
         </div>
         <h3 class="modalTitle">Ajout photo</h3>
@@ -61,12 +62,28 @@
             <label for="title">Titre</label>
             <input type="text" id="title" name="title" required />
             <label for="selectCategory">Catégorie</label>
-            <select id="selectCategory" name="selectCategory"></select>
+            <select id="selectCategory" name="selectCategory">
+              <option value="0">Veuillez choisir une catégorie.</option>
+            </select>
+            <input type="button" id="valider" value="Valider" />
           </form>
         </div>
-        <input type="submit" id="valider" value="valider" />
       </div>
     </aside>
+    <div id="confirmationPopup" class="popup">
+      <div class="popup-content">
+        <p>Voulez-vous vraiment supprimer cette image ?</p>
+        <div class="confirmButton">
+          <button id="confirmDelete">Oui</button>
+          <button id="cancelDelete">Non</button>
+        </div>
+      </div>
+    </div>
+    <div id="successMessage">Photo ajoutée avec succès !</div>
+    <div id="errorContainer" class="error"></div>
+    
+
+
     <header>
       <a href="index.html"
         ><h1>Sophie Bluel <span>Architecte d'intérieur</span></h1></a
@@ -141,6 +158,7 @@
         </ul>
       </nav>
     </footer>
+
     <script src="assets/script/admin.js" defer></script>
     <script src="assets/script/script.js" defer></script>
     <script src="assets/script/modal.js" defer></script>

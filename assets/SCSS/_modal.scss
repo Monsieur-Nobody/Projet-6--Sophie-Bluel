@@ -54,10 +54,10 @@
   // gap: 15px;
 
   article {
-    width: 20%;
+    
 
     img {
-      width: 75px;
+      width: 100px;
     }
   }
 }
@@ -100,8 +100,13 @@
   justify-content: space-between;
 }
 #valider {
-  background-color: #a7a7a7;
   width: 37%;
+  margin: auto;
+  border-radius: 20px;
+  padding: 2px;
+  background-color: #1D6154;
+  color: white;
+  font-family: "Syne";
 }
 #addPictureForm {
   display: flex;
@@ -130,18 +135,7 @@
   margin-bottom: 27px;
   width: 5.1em;
 }
-// #picturePreview {
-// 	display: flex;
-// 	background-color: #E8F1F6;
-// 	height: 200px;
-// 	width: 100%;
-// 	justify-content: center;
-// }
-// #picturePreview img {
-// 	height: 100%;
-// 	width: 31%;
-// 	object-fit: cover;
-// }
+
 #browsePictures {
   font-family: "Work Sans";
   font-size: 1em;
@@ -162,21 +156,13 @@
   margin-bottom: 11px;
 }
 select {
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  background-image: url(./icons/chevron-down.png);
-  background-repeat: no-repeat;
-  background-position: center right;
   background-origin: content-box;
   padding-right: 20px;
+  padding-left: 8px;
   background-color: #ffffff;
+  margin-bottom: 10px;
 }
-option {
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-}
+
 #photo {
   width: 0.1px;
   height: 0.1px;
@@ -184,4 +170,83 @@ option {
   overflow: hidden;
   position: absolute;
   z-index: -1;
+}
+.modalContent .gallery-item {
+    position: relative;
+   
+}
+
+.modalContent .gallery-item img {
+    height: auto;
+}
+
+.modalContent .delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    color: white;
+	
+}
+
+.popup {
+  display: none; /* Caché par défaut */
+  position: fixed; /* Positionné par rapport à la fenêtre du navigateur */
+  top: 50%; /* Centré verticalement */
+  left: 50%; /* Centré horizontalement */
+  transform: translate(-50%, -50%); /* Centre le popup en utilisant la transformation */
+  background-color: white; /* Couleur de fond blanche */
+  padding: 20px; /* Espacement intérieur */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre autour du popup */
+  z-index: 10; /* Assurez-vous qu'il est au-dessus de la modal */
+}
+
+/* Style pour le contenu du popup */
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style pour les boutons du popup */
+.popup-content button {
+  margin: 5px;
+}
+
+.confirmButton {
+  
+  padding-top: 10px;
+}
+#successMessage{
+  display: none;
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  background-color: #33a18d;
+  padding: 8px;
+  color: white;
+  border-radius: 10px;
+  z-index: 15;
+}
+
+
+.error{
+  color: red;
+   display: none;
+   position: fixed;
+   top: 10%;
+   right: 5%;
+   padding: 8px;
+   border-radius: 10px;
+   z-index: 15;
+   background-color: white;
+   font-weight: bold;
+}
+
+.errorMessage {
+  display: flex;
+  flex-direction: column;
+  gap: 15%;
 }
