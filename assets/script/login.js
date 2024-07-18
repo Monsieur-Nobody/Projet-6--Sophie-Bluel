@@ -12,8 +12,8 @@ $form.addEventListener("submit", (event) => {
     // console.log($email.value)
     // console.log($password.value)
 
-    $verifierChamps($email);
-    $verifierChamps($password);
+    // $verifierChamps($email);
+    // $verifierChamps($password);
 
 
     const user = {
@@ -63,22 +63,22 @@ function $verifierChamps(champ) {
     }
 }
 
-const $verifierEmail = (balise) => {
-    let $emailValide = new RegExp("/[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9._-]/gm")
-    if ($emailValide.test(balise.value)){
-        balise.classList.remove("error")
-    } else {
-        balise.classList.add("error")
-    }
-}
-const $verifierPassword = (balise) => {
-    let $passwordValide = new RegExp("/[a-zA-Z0-9._-]+/gm")
-    if ($passwordValide.test(balise.value)){
-        balise.classList.remove("error")
-    } else {
-        balise.classList.add("error")
-    }
-}
+// const $verifierEmail = (balise) => {
+//     let $emailValide = new RegExp("/[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.[a-zA-Z0-9._-]/gm")
+//     if ($emailValide.test(balise.value)){
+//         balise.classList.remove("error")
+//     } else {
+//         balise.classList.add("error")
+//     }
+// }
+// const $verifierPassword = (balise) => {
+//     let $passwordValide = new RegExp("/[a-zA-Z0-9._-]+/gm")
+//     if ($passwordValide.test(balise.value)){
+//         balise.classList.remove("error")
+//     } else {
+//         balise.classList.add("error")
+//     }
+// }
 
 
 

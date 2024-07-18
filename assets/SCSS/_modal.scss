@@ -15,8 +15,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: calc(100vw - 20px);
-  max-height: calc(100vh - 50px);
   width: 630px;
   padding: 30px;
   border-radius: 10px;
@@ -44,7 +42,7 @@
 }
 .modalContent {
   width: 70%;
-  border-bottom: 1px solid #b3b3b3;
+
   padding-bottom: 47px;
 }
 
@@ -54,8 +52,6 @@
   // gap: 15px;
 
   article {
-    
-
     img {
       width: 100px;
     }
@@ -64,49 +60,42 @@
 #editGallery .modalContent {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-auto-rows: 1fr;
   grid-column-gap: 8px;
   grid-row-gap: 10px;
+  width: auto;
+  border-bottom: 1px solid #b3b3b3;
 }
 #addPictureBtn {
   width: auto;
+  font-family: "Syne";
   padding: 10px 49px;
+  margin-top: 25px;
+  border-radius: 60px;
+  background: #1d6154;
+  color: white;
+  border: 0px;
 }
 #deleteGallery {
   color: #d65353;
 }
-.miniWork figcaption {
-  font-size: 12px;
-}
-.miniWork {
-  position: relative;
-}
-.miniWork i {
-  display: block;
-  box-sizing: border-box;
-  background-color: #000000;
-  color: #ffffff;
-  font-size: 0.7em;
-  padding: 4px 5px;
-  border-radius: 2px;
-  position: absolute;
-  top: 0.4em;
-  right: 0.4em;
-}
+
 #addPicture {
   display: none;
+
+  .modalHeader {
+    justify-content: space-between;
+  }
 }
-#addPicture .modalHeader {
-  justify-content: space-between;
-}
+
 #valider {
-  width: 37%;
+  width: 45%;
   margin: auto;
-  border-radius: 20px;
-  padding: 2px;
-  background-color: #1D6154;
-  color: white;
+  padding: 15px;
   font-family: "Syne";
+  border-radius: 60px;
+  background: #1d6154;
+  color: white;
+  border: 0px;
 }
 #addPictureForm {
   display: flex;
@@ -125,36 +114,41 @@
   padding-top: 25px;
   position: relative;
   box-sizing: border-box;
+
+  p {
+    font-size: 10px;
+    font-weight: 400;
+  }
 }
 
-#labelPhoto p {
-  font-size: 10px;
-  font-weight: 400;
-}
 #picture {
   margin-bottom: 27px;
   width: 5.1em;
 }
 
 #browsePictures {
-  font-family: "Work Sans";
-  font-size: 1em;
-  font-weight: 600;
-  color: #3d3d3d;
-  width: fit-content;
-}
-#browsePictures {
   color: #306685;
   background-color: #cbd6dc;
-  border: none;
   padding: 10px 33px;
   margin-bottom: 10px;
-  display: inline-block;
   cursor: pointer;
+  font-weight: 600;
 }
-#title {
-  margin-bottom: 11px;
+
+.titleInput {
+  margin-left: 10px;
+  font-size: 16px;
 }
+
+.dataInput {
+  margin: auto;
+  width: 420px;
+  height: 51px;
+  border: none;
+  background: #fff;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+}
+
 select {
   background-origin: content-box;
   padding-right: 20px;
@@ -171,24 +165,25 @@ select {
   position: absolute;
   z-index: -1;
 }
-.modalContent .gallery-item {
+.modalContent {
+  .gallery-item {
     position: relative;
-   
+  }
+  img {
+    height: auto;
+  }
 }
 
-.modalContent .gallery-item img {
-    height: auto;
-}
+
 
 .modalContent .delete-icon {
-    position: absolute;
-    top: 5px;
-    right: 0px;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 50%;
-    color: white;
-	
+  position: absolute;
+  top: 5px;
+  right: 0px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  color: white;
 }
 
 .popup {
@@ -196,7 +191,10 @@ select {
   position: fixed; /* Positionné par rapport à la fenêtre du navigateur */
   top: 50%; /* Centré verticalement */
   left: 50%; /* Centré horizontalement */
-  transform: translate(-50%, -50%); /* Centre le popup en utilisant la transformation */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Centre le popup en utilisant la transformation */
   background-color: white; /* Couleur de fond blanche */
   padding: 20px; /* Espacement intérieur */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre autour du popup */
@@ -208,18 +206,31 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
 
-/* Style pour les boutons du popup */
-.popup-content button {
-  margin: 5px;
+  button {
+    margin: 5px;
+    cursor: pointer;
+  }
+}
+#confirmDelete {
+  background-color: red;
+    border-radius: 5px;
+    padding: 9px;
+    color: white;
+    border: none;
+}
+#cancelDelete {
+  background-color: green;
+  border-radius: 5px;
+  padding: 9px;
+  color: white;
+  border: none;
 }
 
 .confirmButton {
-  
   padding-top: 10px;
 }
-#successMessage{
+#successMessage {
   display: none;
   position: fixed;
   top: 10%;
@@ -231,18 +242,17 @@ select {
   z-index: 15;
 }
 
-
-.error{
+.error {
   color: red;
-   display: none;
-   position: fixed;
-   top: 10%;
-   right: 5%;
-   padding: 8px;
-   border-radius: 10px;
-   z-index: 15;
-   background-color: white;
-   font-weight: bold;
+  display: none;
+  position: fixed;
+  top: 10%;
+  right: 5%;
+  padding: 8px;
+  border-radius: 10px;
+  z-index: 15;
+  background-color: white;
+  font-weight: bold;
 }
 
 .errorMessage {

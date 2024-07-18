@@ -99,23 +99,24 @@ input[type="submit"] {
   padding: 50px 0;
 }
 
-button {
-  font-family: 'Work Sans' ;
+.filtres button {
+  font-family: 'Work Sans';
   font-weight: 500;
   margin-left: 10px;
-	border: 1px solid #1D6154;
+  border: 1px solid #1D6154;
   border-radius: 60px;
-	font-size: 1.15em;
-	color: #1D6154;
-	background-color: white;
-	padding: 7px 15px;  
-
-  &:focus {
-    background-color: #1D6154;
-    color: white;
-  }
-
+  font-size: 1.15em;
+  color: #1D6154;
+  background-color: white;
+  padding: 7px 15px;
 }
+
+.filtres button.active {
+  background-color: #1D6154;
+  color: white;
+}
+
+
 
 .modeEdition {
   

@@ -68,7 +68,7 @@ window.addEventListener("click", function (event) {
 const afficherImagesModal = () => {
   acceuilModal.innerHTML = "";
 
-  $images.forEach((i) => {
+  $works.forEach((i) => {
     const galleryItem = document.createElement('article');
     galleryItem.classList.add('gallery-item');
 
@@ -92,7 +92,7 @@ const afficherImagesModal = () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  afficherImagesModal();
+  afficherImagesModal();// attend que la page se charge totalement 
 });
 
 boutonAdd.addEventListener("click", () => {
@@ -111,19 +111,19 @@ arrowBack.addEventListener("click", () => {
 
 
 
-fetch(`${$routeApi}categories/`)
-  .then((response) => response.json())
-  .then((categories) => {
-    categories.forEach((category) => {
-      const option = document.createElement("option");
-      option.value = category.id;
-      option.textContent = category.name;
-      selectCategory.appendChild(option);
-    });
-  })
-  .catch((error) => {
-    console.error("Erreur lors du chargement des catégories :", error);
-  });
+    fetch(`${$pathApi}categories/`)
+      .then((response) => response.json())
+      .then((categories) => {
+        categories.forEach((category) => {
+          const option = document.createElement("option");
+          option.value = category.id;
+          option.textContent = category.name;
+          selectCategory.appendChild(option);
+        });
+      })
+      .catch((error) => {
+        console.error("Erreur lors du chargement des catégories :", error);
+      });
 
 
 
@@ -142,7 +142,7 @@ fetch(`${$routeApi}categories/`)
 
 // Section suppresion d'image
   const deleteImage = (id) => {
-    fetch(`${$routeApi}works/${id}`, {
+    fetch(`${$pathApi}works/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + sessionStorage.getItem("token"),
@@ -150,7 +150,7 @@ fetch(`${$routeApi}categories/`)
     })
       .then((response) => {
         if (response.ok) {
-          recupererImage();
+          getWorks();
         } else {
           console.error('Erreur lors de la suppression de l\'image');
         }
@@ -178,9 +178,9 @@ fetch(`${$routeApi}categories/`)
 const newImageTitle = document.getElementById('title');
 const newImageCategory = document.getElementById('selectCategory');
 const newImage = document.getElementById('photo');
-const titleError = document.getElementById('titleError');
-const categoryError = document.getElementById('categoryError');
-const photoError = document.getElementById('photoError');
+// const titleError = document.getElementById('titleError');
+// const categoryError = document.getElementById('categoryError');
+// const photoError = document.getElementById('photoError');
 const errorContainer = document.getElementById('errorContainer');
 
 validerAjoutBtn.addEventListener('click', (event) => {
@@ -233,7 +233,7 @@ if (!isValid) {
     data.append("title", newImageTitle.value);
     data.append("category", newImageCategory.value * 1);
 
-    fetch(`${$routeApi}works/`, {
+    fetch(`${$pathApi}works/`, {
       method: "POST",
       headers: {
         accept: "application/json",
@@ -244,7 +244,7 @@ if (!isValid) {
     .then((response) => {
       if (response.ok) {
         // Rafraîchir les images de la galerie
-        recupererImage();
+        getWorks();
 
         // Afficher le message de succès
         showSuccessMessage();
@@ -279,20 +279,14 @@ if (!isValid) {
     }, 3000); // Le message disparaît après 3 secondes
   };
 
-  function resetForm() {
-    newImageTitle.value = '';
-    newImageCategory.value = '0'; // Assuming '0' is the default value for category
-    newImage.files = '[0]';
-  }
+
   
   function resetForm() {
-    newImageTitle.value = '';
-    newImageCategory.value = '0'; // Assuming '0' is the default value for category
-    newImage.value = '';
+    document.getElementById("addPictureForm").reset();
     picture.src = './assets/icons/picture.png'; // Reset the preview image source
+
   }
   
-  // Event listener to reset form when switching frames
   arrowBack.addEventListener('click', () => {
     resetForm();
     addPicture.style.display = "none";

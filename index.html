@@ -26,7 +26,6 @@
       <i class="fa-regular fa-pen-to-square"></i
       ><span class="lienModal">Mode édition </span>
     </div>
-
     <aside class="modal">
       <div class="modalWrapper" id="editGallery">
         <div class="modalHeader"><i class="fa-solid fa-xmark"></i></div>
@@ -59,12 +58,14 @@
               accept="image/png, image/jpeg"
               required
             />
-            <label for="title">Titre</label>
-            <input type="text" id="title" name="title" required />
-            <label for="selectCategory">Catégorie</label>
-            <select id="selectCategory" name="selectCategory">
+            <label for="title" class="titleInput">Titre</label>
+            <input type="text" id="title" name="title" class="dataInput"
+            required />
+            <label for="selectCategory" class="titleInput">Catégorie</label>
+            <select id="selectCategory" name="selectCategory" class="dataInput">
               <option value="0">Veuillez choisir une catégorie.</option>
             </select>
+            <div class="border_Line"></div>
             <input type="button" id="valider" value="Valider" />
           </form>
         </div>
@@ -81,8 +82,6 @@
     </div>
     <div id="successMessage">Photo ajoutée avec succès !</div>
     <div id="errorContainer" class="error"></div>
-    
-
 
     <header>
       <a href="index.html"
