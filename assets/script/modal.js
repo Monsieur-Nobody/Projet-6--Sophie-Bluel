@@ -231,6 +231,9 @@ formPictureAddBtn.addEventListener('click', (event) => {
 
     errorContainer.textContent = `Les champs suivants sont obligatoires : ${errors.join(', ')}`;
     errorContainer.style.display = 'block';
+    setTimeout(() => {
+      errorContainer.style.display = 'none';
+    }, 3000);
     event.preventDefault();
     return;
   }
