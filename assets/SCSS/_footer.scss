@@ -1,5 +1,22 @@
-footer nav ul {
-	display: flex;
-	justify-content: flex-end;
-	margin: 2em
+footer {
+	background-color: white;
+	height: 52px;
+	
+	
+  nav {
+    ul {
+      display: flex;
+      justify-content: flex-end;
+      margin: 2em;
+	  li{
+		padding-top: 10px;
+	  }
+    }
+  }
+}
+
+body {
+	footer {
+		max-width: none;
+	}
 }

@@ -112,7 +112,7 @@ body {
   margin: auto;
   font-family: "Work Sans";
   font-size: 14px;
-  background-color: #FFFEF8;
+  background-color: #fffef8;
 }
 
 ol,
@@ -149,7 +149,7 @@ h1 {
   font-family: "Syne";
   font-size: 22px;
   font-weight: 800;
-  color: #B1663C;
+  color: #b1663c;
 }
 h1 span {
   font-family: "Work Sans";
@@ -161,11 +161,12 @@ h2 {
   font-family: "Syne";
   font-weight: 700;
   font-size: 30px;
-  color: #1D6154;
+  color: #1d6154;
 }
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 header {
@@ -204,6 +205,7 @@ nav li a:hover {
 #introduction {
   display: flex;
   align-items: center;
+  margin-bottom: 89px;
 }
 #introduction figure {
   flex: 1;
@@ -256,15 +258,7 @@ nav li a:hover {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
-  margin: 2em 0 1em 0;
-}
-#contact textarea {
-  border: none;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-}
-
-input[type=submit] {
+#contact input[type=submit] {
   font-family: "Syne";
   font-weight: 700;
   color: white;
@@ -274,6 +268,13 @@ input[type=submit] {
   text-align: center;
   border-radius: 60px;
 }
+#contact label {
+  margin: 2em 0 1em 0;
+}
+#contact textarea {
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
 
 .filtres {
   display: flex;
@@ -281,21 +282,19 @@ input[type=submit] {
   justify-content: center;
   padding: 50px 0;
 }
-
 .filtres button {
-  font-family: "Work Sans";
+  font-family: "Syne";
   font-weight: 500;
   margin-left: 10px;
-  border: 1px solid #1D6154;
+  border: 1px solid #1d6154;
   border-radius: 60px;
   font-size: 1.15em;
-  color: #1D6154;
+  color: #1d6154;
   background-color: white;
   padding: 7px 15px;
 }
-
 .filtres button.active {
-  background-color: #1D6154;
+  background-color: #1d6154;
   color: white;
 }
 
@@ -307,7 +306,6 @@ input[type=submit] {
   z-index: 5;
   background-color: #000;
   color: #fff;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 45px;
@@ -324,7 +322,7 @@ input[type=submit] {
 .login_formulaire {
   width: 50%;
   margin: auto;
-  padding: 15%;
+  padding: 14%;
 }
 .login_formulaire h2 {
   text-align: center;
@@ -342,22 +340,47 @@ input[type=submit] {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+.login_formulaire form #submit {
+  border-radius: 50px;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 10px;
+  box-shadow: none;
+  background-color: transparent;
+  color: #FFF;
+  font-family: "Syne";
+  font-weight: 700;
+}
+.login_formulaire form #submit.active {
+  background-color: #1d6154;
+  color: white;
+  cursor: pointer;
+}
 
 .error {
   box-shadow: 0px 0px 14px 3px red !important;
 }
 
+footer {
+  background-color: white;
+  height: 52px;
+}
 footer nav ul {
   display: flex;
   justify-content: flex-end;
   margin: 2em;
 }
+footer nav ul li {
+  padding-top: 10px;
+}
+
+body footer {
+  max-width: none;
+}
 
 /* Modal */
 .modal {
   display: none;
-  align-items: center;
-  justify-content: center;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -366,8 +389,7 @@ footer nav ul {
   background: rgba(0, 0, 0, 0.3);
   z-index: 1;
 }
-
-.modalWrapper {
+.modal .modalContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -376,54 +398,25 @@ footer nav ul {
   border-radius: 10px;
   background-color: #ffffff;
   margin: auto;
-  overflow: auto;
   z-index: 2;
 }
-
-.modalHeader {
+.modal .modalContainer .modalHeader {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
-
-#editGallery .modalHeader {
-  justify-content: flex-end;
-}
-
-.modal i {
-  display: block;
-  font-size: 1.5em;
-  border-bottom: 10px;
-}
-
-.modalTitle {
+.modal .modalContainer .modalTitle {
   font-size: 26px;
   margin-bottom: 47px;
 }
-
-.modalContent {
+.modal .modalContainer .modalContent {
   width: 70%;
   padding-bottom: 47px;
 }
-
-.frameOneModal {
-  display: flex;
-  flex-wrap: wrap;
-}
-.frameOneModal article img {
+.modal .modalContainer .modalDisplayGallery article img {
   width: 100px;
 }
-
-#editGallery .modalContent {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-column-gap: 8px;
-  grid-row-gap: 10px;
-  width: auto;
-  border-bottom: 1px solid #b3b3b3;
-}
-
-#addPictureBtn {
+.modal .modalContainer #addPictureBtn {
   width: auto;
   font-family: "Syne";
   padding: 10px 49px;
@@ -433,37 +426,59 @@ footer nav ul {
   color: white;
   border: 0px;
 }
-
-#deleteGallery {
-  color: #d65353;
+.modal #modalGallery .modalHeader {
+  justify-content: flex-end;
 }
-
-#addPicture {
+.modal #modalGallery .modalContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 8px;
+  grid-row-gap: 10px;
+  width: auto;
+  border-bottom: 1px solid #b3b3b3;
+}
+.modal #modalGallery .modalContent .gallery-item {
+  position: relative;
+}
+.modal #modalGallery .modalContent img {
+  height: auto;
+}
+.modal #modalGallery .modalContent .delete-icon {
+  position: absolute;
+  top: 3px;
+  right: 2px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 2px;
+  background-color: black;
+  color: white;
+}
+.modal #addPicture {
   display: none;
 }
-#addPicture .modalHeader {
+.modal #addPicture .modalHeader {
   justify-content: space-between;
 }
-
-#valider {
+.modal #addPicture #valider {
   width: 45%;
   margin: auto;
   padding: 15px;
   font-family: "Syne";
   border-radius: 60px;
-  background: #1d6154;
   color: white;
   border: 0px;
+  margin-top: 15px;
 }
-
-#addPictureForm {
+.modal #addPicture #valider.allowed {
+  background: #1d6154;
+}
+.modal #addPicture #addPictureForm {
   display: flex;
   flex-direction: column;
   width: 100%;
   gap: 10px;
 }
-
-#labelPhoto {
+.modal #addPicture #labelPhoto {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -475,17 +490,27 @@ footer nav ul {
   position: relative;
   box-sizing: border-box;
 }
-#labelPhoto p {
+.modal #addPicture #labelPhoto #labelTextPhoto {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+.modal #addPicture #labelPhoto p {
   font-size: 10px;
   font-weight: 400;
 }
-
-#picture {
+.modal #addPicture .picture {
   margin-bottom: 27px;
-  width: 5.1em;
+  width: 5em;
 }
-
-#browsePictures {
+.modal #addPicture .picture.new {
+  width: 80%;
+  height: 80%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  padding-top: 0px;
+}
+.modal #addPicture #browsePictures {
   color: #306685;
   background-color: #cbd6dc;
   padding: 10px 33px;
@@ -493,53 +518,32 @@ footer nav ul {
   cursor: pointer;
   font-weight: 600;
 }
-
-.titleInput {
+.modal #addPicture .titleInput {
   margin-left: 10px;
   font-size: 16px;
 }
-
-.dataInput {
+.modal #addPicture .dataInput {
   margin: auto;
+  margin-bottom: 20px;
   width: 420px;
   height: 51px;
   border: none;
   background: #fff;
   box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
 }
-
-select {
+.modal #addPicture select {
   background-origin: content-box;
   padding-right: 20px;
   padding-left: 8px;
   background-color: #ffffff;
-  margin-bottom: 10px;
 }
-
-#photo {
+.modal #addPicture #photo {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
   overflow: hidden;
   position: absolute;
   z-index: -1;
-}
-
-.modalContent .gallery-item {
-  position: relative;
-}
-.modalContent img {
-  height: auto;
-}
-
-.modalContent .delete-icon {
-  position: absolute;
-  top: 5px;
-  right: 0px;
-  cursor: pointer;
-  padding: 5px;
-  border-radius: 50%;
-  color: white;
 }
 
 .popup {
@@ -553,36 +557,31 @@ select {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre autour du popup */
   z-index: 10; /* Assurez-vous qu'il est au-dessus de la modal */
 }
-
-/* Style pour le contenu du popup */
-.popup-content {
+.popup .popup-content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.popup-content button {
+.popup .popup-content button {
   margin: 5px;
   cursor: pointer;
 }
-
-#confirmDelete {
+.popup .popup-content .confirmButton {
+  padding-top: 10px;
+}
+.popup .popup-content .confirmButton #confirmDelete {
   background-color: red;
   border-radius: 5px;
   padding: 9px;
   color: white;
   border: none;
 }
-
-#cancelDelete {
+.popup .popup-content .confirmButton #cancelDelete {
   background-color: green;
   border-radius: 5px;
   padding: 9px;
   color: white;
   border: none;
-}
-
-.confirmButton {
-  padding-top: 10px;
 }
 
 #successMessage {
@@ -610,8 +609,9 @@ select {
   font-weight: bold;
 }
 
-.errorMessage {
-  display: flex;
-  flex-direction: column;
-  gap: 15%;
+.border_Line {
+  background-color: #B3B3B3;
+  width: 80%;
+  height: 1px;
+  margin: auto;
 }/*# sourceMappingURL=style.css.map */

@@ -1,11 +1,11 @@
-//Variables
-const ouvreModal = document.querySelectorAll(".lienModal");
+//Variables des selecteur 
+const openModal = document.querySelectorAll(".lienModal");
 
 const modal = document.querySelector(".modal");
 
 const close = document.querySelectorAll(".fa-xmark");
 
-const editGallery = document.getElementById("editGallery");
+const editGallery = document.getElementById("modalGallery");
 
 const addPicture = document.getElementById("addPicture");
 
@@ -13,7 +13,7 @@ const boutonAdd = document.getElementById("addPictureBtn");
 
 const arrowBack = document.querySelector(".fa-arrow-left");
 
-const acceuilModal = document.querySelector(".frameOneModal");
+const modalGallery = document.querySelector(".modalDisplayGallery");
 
 const confirmationPopup = document.getElementById("confirmationPopup");
 
@@ -27,15 +27,15 @@ const photoInput = document.getElementById("photo");
 
 const labelPhoto = document.getElementById("labelPhoto");
 
-const picture = document.getElementById("picture");
+const picture = document.querySelector(".picture");
 
-const validerAjoutBtn = document.getElementById('valider');
+const formPictureAddBtn = document.getElementById('valider');
 
 let imageIdToDelete = null;
 
 // Fonctions d'ouvertures , de gestion et de navigation dans la modal
 
-ouvreModal.forEach((element) => {
+openModal.forEach((element) => {
   element.addEventListener("click", function () {
     modal.style.display = "flex";
   });
@@ -66,7 +66,7 @@ window.addEventListener("click", function (event) {
 
 
 const afficherImagesModal = () => {
-  acceuilModal.innerHTML = "";
+  modalGallery.innerHTML = "";
 
   $works.forEach((i) => {
     const galleryItem = document.createElement('article');
@@ -86,7 +86,7 @@ const afficherImagesModal = () => {
 
     galleryItem.appendChild(img);
     galleryItem.appendChild(deleteIcon);
-    acceuilModal.appendChild(galleryItem);
+    modalGallery.appendChild(galleryItem);
   });
 };
 
@@ -130,10 +130,14 @@ arrowBack.addEventListener("click", () => {
 
   photoInput.addEventListener("change", () => {
     const file = photoInput.files[0];
+    const labelTextPhoto = document.getElementById("labelTextPhoto");
+    labelTextPhoto.style.display= "flex"
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
         picture.src = e.target.result;
+        labelTextPhoto.style.display= "none"
+        picture.classList.add('new')
       };
       reader.readAsDataURL(file);
     }
@@ -178,93 +182,86 @@ arrowBack.addEventListener("click", () => {
 const newImageTitle = document.getElementById('title');
 const newImageCategory = document.getElementById('selectCategory');
 const newImage = document.getElementById('photo');
-// const titleError = document.getElementById('titleError');
-// const categoryError = document.getElementById('categoryError');
-// const photoError = document.getElementById('photoError');
 const errorContainer = document.getElementById('errorContainer');
 
-validerAjoutBtn.addEventListener('click', (event) => {
-  // Reset error messages
-
-  errorContainer.textContent = '';
-  errorContainer.style.display = 'none';
-
+const validateForm = () => {
   let isValid = true;
-  const errors = [];
 
   // Valider le champ de titre
   if (!newImageTitle.value) {
-    errors.push('Titre');
     isValid = false;
   }
 
   // Valider le champ de catégorie
   const selectedCategory = parseInt(newImageCategory.value, 10);
   if (selectedCategory < 1 || selectedCategory > 3) {
-    errors.push('Catégorie');
     isValid = false;
   }
 
   // Valider le champ de photo
   if (!newImage.files.length) {
-    errors.push('Photo');
     isValid = false;
   }
 
-  // Afficher le message d'erreur général si des champs ne sont pas valides
-  if (!isValid) {
+  // Ajouter ou retirer la classe "allowed"
+  if (isValid) {
+    formPictureAddBtn.classList.add('allowed');
+  } else {
+    formPictureAddBtn.classList.remove('allowed');
+  }
+
+  return isValid;
+};
+
+// Écouter les changements sur les champs du formulaire
+newImageTitle.addEventListener('input', validateForm);
+newImageCategory.addEventListener('change', validateForm);
+newImage.addEventListener('change', validateForm);
+
+formPictureAddBtn.addEventListener('click', (event) => {
+  errorContainer.textContent = '';
+  errorContainer.style.display = 'none';
+
+  if (!validateForm()) {
+    const errors = [];
+    if (!newImageTitle.value) errors.push('Titre');
+    const selectedCategory = parseInt(newImageCategory.value, 10);
+    if (selectedCategory < 1 || selectedCategory > 3) errors.push('Catégorie');
+    if (!newImage.files.length) errors.push('Photo');
+
     errorContainer.textContent = `Les champs suivants sont obligatoires : ${errors.join(', ')}`;
     errorContainer.style.display = 'block';
-  }
-
-
-// Empêcher la soumission du formulaire si des champs ne sont pas valides
-if (!isValid) {
-  event.preventDefault();
-}
- 
-  if (isValid) {
-    console.log(newImageTitle.value);
-    console.log(newImageCategory.value);
-    console.log(newImage.files[0]);
-
-    const data = new FormData();
-    data.append("image", newImage.files[0]);
-    data.append("title", newImageTitle.value);
-    data.append("category", newImageCategory.value * 1);
-
-    fetch(`${$pathApi}works/`, {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-      },
-      body: data,
-    })
-    .then((response) => {
-      if (response.ok) {
-        // Rafraîchir les images de la galerie
-        getWorks();
-
-        // Afficher le message de succès
-        showSuccessMessage();
-
-        resetForm();
-
-        // Revenir à la première frame de la modal
-        addPicture.style.display = "none";
-        editGallery.style.display = "flex";
-      } else {
-        console.error('Erreur lors de l\'ajout de l\'image');
-      }
-    })
-    .catch((error) => {
-      console.error('Erreur lors de l\'ajout de l\'image:', error);
-    });
-  } else {
-    // Prevent form submission if invalid
     event.preventDefault();
+    return;
   }
+
+  const data = new FormData();
+  data.append("image", newImage.files[0]);
+  data.append("title", newImageTitle.value);
+  data.append("category", newImageCategory.value * 1);
+
+  fetch(`${$pathApi}works/`, {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      Authorization: "Bearer " + sessionStorage.getItem("token"),
+    },
+    body: data,
+  })
+  .then((response) => {
+    if (response.ok) {
+      getWorks();
+      showSuccessMessage();
+      resetForm();
+      addPicture.style.display = "none";
+      editGallery.style.display = "flex";
+    } else {
+      console.error('Erreur lors de l\'ajout de l\'image');
+    }
+  })
+  .catch((error) => {
+    console.error('Erreur lors de l\'ajout de l\'image:', error);
+  });
 });
 
 

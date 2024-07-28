@@ -27,13 +27,13 @@
       ><span class="lienModal">Mode édition </span>
     </div>
     <aside class="modal">
-      <div class="modalWrapper" id="editGallery">
+      <div class="modalContainer" id="modalGallery">
         <div class="modalHeader"><i class="fa-solid fa-xmark"></i></div>
         <h3 class="modalTitle">Galerie photo</h3>
-        <div class="modalContent frameOneModal"></div>
+        <div class="modalContent modalDisplayGallery"></div>
         <button id="addPictureBtn">Ajouter une photo</button>
       </div>
-      <div class="modalWrapper" id="addPicture">
+      <div class="modalContainer" id="addPicture">
         <div class="modalHeader">
           <i class="fa-solid fa-arrow-left" id="arrowBack"></i
           ><i class="fa-solid fa-xmark"></i>
@@ -41,14 +41,17 @@
         <h3 class="modalTitle">Ajout photo</h3>
         <div class="modalContent">
           <form id="addPictureForm" name="addPictureForm">
-            <div id="labelPhoto">
+            <div id="labelPhoto" >
               <img
                 src="./assets/icons/picture.png"
-                id="picture"
+                class="picture"
                 alt="choisir une image"
               />
+              <div id="labelTextPhoto">
               <label for="photo" id="browsePictures">+ Ajouter photo</label>
               <p>jpg, png : 4mo max</p>
+              </div>
+
             </div>
             <input
               type="file"
@@ -59,8 +62,13 @@
               required
             />
             <label for="title" class="titleInput">Titre</label>
-            <input type="text" id="title" name="title" class="dataInput"
-            required />
+            <input
+              type="text"
+              id="title"
+              name="title"
+              class="dataInput"
+              required
+            />
             <label for="selectCategory" class="titleInput">Catégorie</label>
             <select id="selectCategory" name="selectCategory" class="dataInput">
               <option value="0">Veuillez choisir une catégorie.</option>
@@ -104,20 +112,21 @@
         <article>
           <h2>Designer d'espace</h2>
           <p>
-            Je raconte votre histoire, je valorise vos idées. Je vous accompagne
-            de la conception à la livraison finale du chantier.
+            Je raconte votre histoire, je valorise vos idées.Je vous<br />
+            accompagne de la conception à la livraison finale du<br />
+            chantier.<br /><br />
+            Chaque projet sera étudié en commun, de façon à mettre<br />
+            en valeur les volumes, les matières et les couleurs dans le<br />
+            respect de l’esprit des lieux et le choix adapté des<br />
+            matériaux. Le suivi du chantier sera assuré dans le souci<br />
+            du détail, le respect du planning et du<br />
+            budget.<br /><br />
+
+            En cas de besoin, une équipe pluridisciplinaire peut-être<br />
+            constituée : architecte DPLG, décorateur(trice)
           </p>
-          <p>
-            Chaque projet sera étudié en commun, de façon à mettre en valeur les
-            volumes, les matières et les couleurs dans le respect de l’esprit
-            des lieux et le choix adapté des matériaux. Le suivi du chantier
-            sera assuré dans le souci du détail, le respect du planning et du
-            budget.
-          </p>
-          <p>
-            En cas de besoin, une équipe pluridisciplinaire peut-être constituée
-            : architecte DPLG, décorateur(trice)
-          </p>
+          <!-- <p></p>
+          <p></p> -->
         </article>
       </section>
       <section id="portfolio">
@@ -150,7 +159,7 @@
       </section>
     </main>
 
-    <footer>
+    <footer id="noWidthMax">
       <nav>
         <ul>
           <li>Mentions Légales</li>

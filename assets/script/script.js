@@ -9,7 +9,7 @@ let $category = [];
 // Var route API
 const $pathApi = "http://localhost:5678/api/";
 
-const getWorks = async () => {
+const getWorks = async () => { // Variable async pour permettre la bonne execution et chronologie du code
   try {
     const response = await fetch(`${$pathApi}works`);
     const data = await response.json();
@@ -31,7 +31,7 @@ const getCategory = () => {
     // le second then traite les données qui viennent d'etre créer dans le json et les affiche via le console.log
     .then((data) => {
       //  console.log(data)
-      // Maintenant qu'on a vérifié qu'on recupere bien les informations via le console.log on les attribue a la variable $works
+      // Maintenant qu'on a vérifié qu'on recupere bien les informations via le console.log on les attribue a la variable $category
       $category = data;
       displayCategory();
     })
